@@ -1,0 +1,91 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+#game-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #007bff;
+}
+
+#target-time-container, #best-record-container {
+    margin-bottom: 20px;
+}
+
+#target-time-container p, #best-record-container p {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+#target-time, #best-record {
+    font-size: 28px;
+    font-weight: bold;
+    color: #dc3545;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#best-record {
+    color: #28a745;
+}
+
+#stopwatch-display {
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#start-stop-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#start-stop-btn:hover {
+    background-color: #0056b3;
+}
+
+#start-stop-btn:active {
+    transform: scale(0.98);
+}
+
+#start-stop-btn.stop {
+    background-color: #dc3545;
+}
+
+#start-stop-btn.stop:hover {
+    background-color: #c82333;
+}
+
+#result-message {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    height: 30px;
+}
