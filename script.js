@@ -25,7 +25,7 @@ function startStopwatch() {
     stopwatchInterval = setInterval(updateStopwatch, 10);
     startStopBtn.textContent = 'ストップ';
     startStopBtn.classList.add('stop');
-    resultMessageEl.textContent = '';
+    resultMessageEl.innerHTML = ''; // メッセージをクリア
     running = true;
     clearAnimation();
 }
@@ -49,18 +49,16 @@ function checkResult(elapsedTime) {
     const target = parseFloat(targetTime);
     const difference = Math.abs(elapsedTime - target);
 
+    resultMessageEl.innerHTML = ''; // Clear previous messages
+
     if (difference <= 0.01) {
         resultMessageEl.innerHTML = '凄い！<br>天才！<br>やばい！！';
         resultMessageEl.style.color = '#ff0';
         showSparkles();
-    } else if (difference <= 10) {
-        resultMessageEl.innerHTML = 'まあまあ、<br>やるじゃん！！<br>ちょっと見なおしたよ！';
-        resultMessageEl.style.color = '#0f0';
-        showFireworks();
+    } else if (difference <= 0.20) {
+        resultMessageEl.innerHTML = '<div class="scroll-text good-scroll">まあまあ、やるじゃん！！ちょっと見なおしたよ！</div>';
     } else {
-        resultMessageEl.innerHTML = 'うわっ、<br>だせ～ｗｗｗｗ<br>草生えるｗｗｗｗ';
-        resultMessageEl.style.color = '#f00';
-        showInsults();
+        resultMessageEl.innerHTML = '<div class="scroll-text insult-scroll">うわっ、だせ～ｗｗｗｗ草生えるｗｗｗｗ</div>';
     }
 
     if (difference < bestRecord) {
@@ -80,29 +78,6 @@ function showSparkles() {
         sparkle.style.top = `${Math.random() * 100}vh`;
         sparkle.style.fontSize = `${Math.random() * 20 + 10}px`;
         animationContainer.appendChild(sparkle);
-    }
-}
-
-function showFireworks() {
-    for (let i = 0; i < 30; i++) {
-        const firework = document.createElement('div');
-        firework.className = 'firework';
-        firework.style.left = `${Math.random() * 100}vw`;
-        firework.style.top = `${Math.random() * 100}vh`;
-        firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-        animationContainer.appendChild(firework);
-    }
-}
-
-function showInsults() {
-    for (let i = 0; i < 50; i++) {
-        const insult = document.createElement('div');
-        insult.className = 'insult';
-        insult.textContent = 'だせ～w';
-        insult.style.left = `${Math.random() * 100}vw`;
-        insult.style.top = `${-Math.random() * 100}px`; // Start from top
-        insult.style.animationDuration = `${Math.random() * 2 + 1}s`;
-        animationContainer.appendChild(insult);
     }
 }
 

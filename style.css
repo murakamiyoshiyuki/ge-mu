@@ -1,5 +1,6 @@
 body {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Silkscreen', sans-serif;
+    letter-spacing: -2px; /* 文字間を詰める */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +8,7 @@ body {
     margin: 0;
     background-color: #000;
     color: #fff;
-    overflow: hidden; /* アニメーションが画面外にはみ出さないように */
+    overflow: hidden;
 }
 
 #game-container {
@@ -46,6 +47,7 @@ h1 {
     background-color: #000;
     padding: 8px;
     border: 2px solid #fff;
+    font-family: 'Press Start 2P', cursive;
 }
 
 #best-record {
@@ -57,19 +59,21 @@ h1 {
     font-weight: bold;
     margin-bottom: 25px;
     color: #fff;
+    font-family: 'Press Start 2P', cursive;
 }
 
 #start-stop-btn {
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Silkscreen', sans-serif;
     color: #fff;
     background-color: #007bff;
     border: 2px solid #fff;
     box-shadow: 2px 2px #000;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
+    letter-spacing: -1px; /* 文字間を詰める */
 }
 
 #start-stop-btn:active {
@@ -83,10 +87,12 @@ h1 {
 
 #result-message {
     margin-top: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    height: 40px;
-    line-height: 1.4;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* アニメーション用 */
@@ -100,32 +106,38 @@ h1 {
     z-index: 0;
 }
 
-.sparkle, .firework, .insult {
-    position: absolute;
-    font-size: 20px;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
 .sparkle {
-    color: #ff0;
-    animation-name: sparkle-anim;
-}
-
-.firework {
-    width: 10px;
-    height: 10px;
-    background: red;
-    border-radius: 50%;
     position: absolute;
-    animation: firework-anim 1s ease-out infinite;
+    color: #ff0;
+    animation: sparkle-anim 1s linear infinite;
+    font-family: 'DotGothic16', sans-serif;
+    text-shadow: 2px 2px #000;
 }
 
-.insult {
+.scroll-text {
+    position: absolute;
+    width: max-content;
+    white-space: nowrap;
+    font-family: 'Press Start 2P', cursive; /* 最もブロック感の強いフォントに戻す */
+    font-size: 32px; /* サイズを少し大きくして効果を強調 */
+    text-shadow: 3px 3px #000; /* 影を太くして立体感を出す */
+    animation: scroll-left-local 8s linear infinite;
+    letter-spacing: -2px;
+
+    /* アンチエイリアスを無効化して、強制的にブロック状に表示 */
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    image-rendering: -webkit-optimize-contrast; /* 古いブラウザ用 */
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+.good-scroll {
+    color: #0f0;
+}
+
+.insult-scroll {
     color: #f00;
-    font-size: 24px;
-    animation: insult-anim 2s linear infinite;
 }
 
 @keyframes sparkle-anim {
@@ -134,12 +146,7 @@ h1 {
     100% { transform: scale(1); opacity: 1; }
 }
 
-@keyframes firework-anim {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(1.5); opacity: 0; }
-}
-
-@keyframes insult-anim {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+@keyframes scroll-left-local {
+    0% { transform: translateX(110%); }
+    100% { transform: translateX(-110%); }
 }
