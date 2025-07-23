@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start pixel-text.html)",
+      "Bash(explorer pixel-text.html)",
+      "Bash(start index.html)"
+    ],
+    "deny": []
+  }
+}

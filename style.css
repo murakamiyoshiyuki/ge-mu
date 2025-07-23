@@ -87,12 +87,17 @@ h1 {
 
 #result-message {
     margin-top: 15px;
-    height: 80px;
+    margin-bottom: 15px;
+    height: 100px; /* 文字サイズに合わせて高さを固定 */
     overflow: hidden;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* ご指定のスタイルを適用 */
+    background-color: #111111;
+    padding: 20px;
+    border: 2px solid #444; /* 境界線を少し追加 */
 }
 
 /* アニメーション用 */
@@ -118,26 +123,28 @@ h1 {
     position: absolute;
     width: max-content;
     white-space: nowrap;
-    font-family: 'Press Start 2P', cursive; /* 最もブロック感の強いフォントに戻す */
-    font-size: 32px; /* サイズを少し大きくして効果を強調 */
-    text-shadow: 3px 3px #000; /* 影を太くして立体感を出す */
+    font-family: 'DotGothic16', monospace;
+    font-size: 48px;
+    font-weight: bold;
+    color: #ff3333;
+    text-shadow: 3px 3px 0px #000000;
     animation: scroll-left-local 8s linear infinite;
-    letter-spacing: -2px;
+    letter-spacing: 2px;
+    transform: scaleX(1.2);
 
-    /* アンチエイリアスを無効化して、強制的にブロック状に表示 */
+    /* アンチエイリアス無効化は維持 */
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
-    image-rendering: -webkit-optimize-contrast; /* 古いブラウザ用 */
     image-rendering: crisp-edges;
     image-rendering: pixelated;
 }
 
 .good-scroll {
-    color: #0f0;
+    color: #0f0; /* 緑色 */
 }
 
 .insult-scroll {
-    color: #f00;
+    /* color already defined in .scroll-text */
 }
 
 @keyframes sparkle-anim {
